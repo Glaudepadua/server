@@ -77,7 +77,7 @@ function extenso(num){
 	numero = numero.substring(1, 10)
 
     if(isNaN(numero)){
-    	return "Ops! Parece que você não inseriu um número.\nInsira um valor dentro do intevalo: [-99999,99999]"
+    	return "Ops! Parece que voce nao inseriu um numero.\nInsira um valor dentro do intevalo: [-99999, 99999]"
     } else if (numero < -99999 || numero > 99999 || numero == ""){
     	return "Insira um valor dentro do intevalo: [-99999, 99999]"
     }
@@ -101,7 +101,7 @@ function extenso(num){
     } else if(var1 > 1 && var2 == 0){
     	result += sinal + trio(var1) + " mil";
 	} else if(var1 > 1 && var2 != 0){
-    	result += sinal + trio(var1) + " mil e " + trio(var2);    	
+    	result += sinal + trio(var1) + " mil e " + trio(var2);
     } else{
     	result += sinal + trio(var2)
     }
