@@ -1,15 +1,12 @@
 const http = require('http')
 const port = 3000
-const ip = 'localhost'
+const ip = '0.0.0.0'
 
 const server = http.createServer((req, res) => {
 	const responses = []
-	responses['/'] = '<h1>Home</h1>'
-	responses['/glau'] = '<h1>Glaucia de Padua</h1>'
-	responses['/naoExiste'] = '<h1>URL sem resposta definida!</h1>'
-	responses[req.url] = '<h1>' + extenso(req.url) + '</h1>'
+	responses[req.url] = extenso(req.url)
 
-	res.end(responses[req.url] || responses['/naoExiste'])
+	res.end(responses[req.url])
 })
 
 server.listen(port, ip, () => {
@@ -72,12 +69,12 @@ function trio(num) {
 }
 
 function extenso(num){
-	var result = "Extenso: "
+	var result = ""
     var numero = num.toString();
 	numero = numero.substring(1, 10)
 
     if(isNaN(numero)){
-    	return "Ops! Parece que voce nao inseriu um numero.\nInsira um valor dentro do intevalo: [-99999, 99999]"
+    	return "Ops! Parece que voce nao inseriu um numero. <br>Insira um valor dentro do intevalo: [-99999, 99999]"
     } else if (numero < -99999 || numero > 99999 || numero == ""){
     	return "Insira um valor dentro do intevalo: [-99999, 99999]"
     }
@@ -105,6 +102,10 @@ function extenso(num){
     } else{
     	result += sinal + trio(var2)
     }
+
+    result = '{"Extenso": "' + result + '"}'
+    obj = JSON.parse(result);
+    console.log(obj);
 
     return result;
 }
