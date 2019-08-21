@@ -3,10 +3,11 @@ const port = 3000
 const ip = '0.0.0.0'
 
 const server = http.createServer((req, res) => {
-	const responses = []
-	responses[req.url] = extenso(req.url)
+	var resposta = extenso(req.url)
+    obj = JSON.parse(resposta);
+    console.log(obj);
 
-	res.end(responses[req.url])
+	res.end(resposta)
 })
 
 server.listen(port, ip, () => {
@@ -74,7 +75,7 @@ function extenso(num){
 	numero = numero.substring(1, 10)
 
     if(isNaN(numero)){
-    	return "Ops! Parece que voce nao inseriu um numero. <br>Insira um valor dentro do intevalo: [-99999, 99999]"
+    	return "Parece que voce nao inseriu um numero. \nInsira um valor dentro do intevalo: [-99999, 99999]"
     } else if (numero < -99999 || numero > 99999 || numero == ""){
     	return "Insira um valor dentro do intevalo: [-99999, 99999]"
     }
@@ -104,8 +105,6 @@ function extenso(num){
     }
 
     result = '{"Extenso": "' + result + '"}'
-    obj = JSON.parse(result);
-    console.log(obj);
 
     return result;
 }
