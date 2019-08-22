@@ -7,7 +7,7 @@ const server = http.createServer((req, res) => {
     obj = JSON.parse(resposta);
     console.log(obj);
 
-	res.end(resposta)
+	res.end(obj.Extenso)
 })
 
 server.listen(port, ip, () => {
